@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_experience"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Add Your Experience " />
+        <item
+            android:id="@+id/nav_honestStories"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Honest Stories" />
+        <item
+            android:id="@+id/nav_location"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Location Analysis" />
+        <item
+            android:id="@+id/nav_manageAccount"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Manage Your Account" />
+
+        <item
+            android:id="@+id/nav_questionnaire"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Questionnaire" />
+
+        <item
+            android:id="@+id/nav_graph"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Graphical Representation" />
+        <item
+            android:id="@+id/nav_audio"
+            android:icon="@drawable/volume"
+            android:title="Secret Audio" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Logout" />
+
+
+    </group>
+
+
+</menu>
+
