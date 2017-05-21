@@ -161,7 +161,7 @@ public class HomeActivity extends AppCompatActivity
                     JSONArray jsonArray = jsonObject.getJSONArray("stories");
 
                     int  sid=0;
-                    String username="",title="",description="",privacy="",u="Anonymous";
+                    String username="",title="",description="",privacy="",u="Anonymous" ,dep = " ",pl = " ", img = " ", aud = " ", vid = " ";
 
                     for(int i=0;i<jsonArray.length();i++){
                         JSONObject jObj = jsonArray.getJSONObject(i);
@@ -170,13 +170,19 @@ public class HomeActivity extends AppCompatActivity
                         sid = jObj.getInt("storyId");
                         title = jObj.getString("storyTitle");
                         description = jObj.getString("storyDesc");
+                        dep = jObj.getString("department");
+                        pl = jObj.getString("place");
                         privacy = jObj.getString("privacy");
+                        img = jObj.getString("imageProof");
+                        aud = jObj.getString("audioProof");
+                        vid = jObj.getString("videoProof");
+
 
                         if(privacy.equals("Anonymous")){
-                            stories.add(new StoryBean(0,sid,title,null,null,description,null,null,null,u));
+                            stories.add(new StoryBean(0,sid,title,dep,pl,description,img,aud,vid,u));
                         }else{
                             Log.i("name",username);
-                            stories.add(new StoryBean(0,sid,title,null,null,description,null,null,null,username));
+                            stories.add(new StoryBean(0,sid,title,dep,pl,description,img,aud,vid,username));
                         }
 
                     }

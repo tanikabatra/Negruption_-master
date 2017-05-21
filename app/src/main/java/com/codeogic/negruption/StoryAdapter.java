@@ -43,7 +43,7 @@ public class StoryAdapter extends ArrayAdapter<StoryBean> {
         TextView txtViews = (TextView)view.findViewById(R.id.textViewViews);
         TextView txtReadMore = (TextView)view.findViewById(R.id.textViewReadMore);
 
-        StoryBean story = storyList.get(position);
+        final StoryBean story = storyList.get(position);
         txtName.setText(story.getUsername());
         txtTitle.setText(story.getStoryTitle());
         txtDescription.setText(story.getStoryDesc());
@@ -52,6 +52,7 @@ public class StoryAdapter extends ArrayAdapter<StoryBean> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),StoryActivity.class);
+                intent.putExtra("keyStory",story);
                 getContext().startActivity(intent);
 
             }
