@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.squareup.picasso.Picasso;
@@ -57,7 +58,6 @@ public class StoryActivity extends AppCompatActivity {
     @InjectView(R.id.btnVideoPlay)
     ImageButton videoPlay;
 
-    String image ,audio , video;
 
     MediaPlayer mediaPlayer;
 
@@ -85,42 +85,41 @@ public class StoryActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading...");
 
+
+
         progressDialog.show();
 
+
         Log.i("info",story.toString());
+        Toast.makeText(this,story.getImageProof() + story.getAudioProof() + story.getVideoProof(),Toast.LENGTH_LONG).show();
 
 
-        if (image!=null){
+        if (!story.getImageProof().equals("null")){
             imageView.setVisibility(View.VISIBLE);
-            Picasso.with(StoryActivity.this).load("http://codeogic.esy.es/../proofs/hhujk.JPEG").into(imageView);
+            Picasso.with(this).load(story.getImageProof()).into(imageView);
             progressDialog.dismiss();
         }
 
-        if (audio!=null){
+        if (!story.getAudioProof().equals("null")){
             btnPlay.setVisibility(View.VISIBLE);
             btnPause.setVisibility(View.VISIBLE);
             btnStop.setVisibility(View.VISIBLE);
 
             mediaPlayer = new MediaPlayer();
             try {
-                mediaPlayer.setDataSource(this, Uri.parse(audio));
+                mediaPlayer.setDataSource(this, Uri.parse(story.getAudioProof()));
+                mediaPlayer.prepare();
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            try {
-                mediaPlayer.prepare();
-                progressDialog.dismiss();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
-        if (video!=null){
-            videoView.setVisibility(View.VISIBLE);
+        if (!(story.getVideoProof().equals("null"))){
+         videoView.setVisibility(View.VISIBLE);
             videoPlay.setVisibility(View.VISIBLE);
             videoView.setMediaController(new MediaController(this));
-            videoView.setVideoURI(Uri.parse(video));
+            videoView.setVideoURI(Uri.parse(story.getVideoProof()));
             videoView.requestFocus();
             progressDialog.dismiss();
 
@@ -155,6 +154,11 @@ public class StoryActivity extends AppCompatActivity {
         if (mediaPlayer!=null){
             mediaPlayer.release();
             mediaPlayer = null;
+        }
+
+        if (videoView!=null){
+            videoView.stopPlayback();
+            videoView = null;
         }
     }
 }

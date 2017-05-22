@@ -57,6 +57,7 @@
             android:id="@+id/sImageView"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/backg"
+            android:visibility="gone"
             />
 
         <LinearLayout
@@ -72,6 +73,7 @@
                 android:onClick="clickPlay"
                 android:text="Play"
                 android:layout_marginLeft="10dp"
+                android:visibility="gone"
                 />
 
             <Button
@@ -81,6 +83,7 @@
                 android:onClick="clickPause"
                 android:text="Pause"
                 android:layout_marginLeft="20dp"
+                android:visibility="gone"
                />
 
             <Button
@@ -90,6 +93,7 @@
                 android:text="Stop"
                 android:onClick="clickStop"
                 android:layout_marginLeft="20dp"
+                android:visibility="gone"
                 />
 
         </LinearLayout>
@@ -98,16 +102,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/sVideoView"
-            android:visibility="gone"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="30dp"
+            android:visibility="gone"/>
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnVideoPlay"
             android:background="@drawable/video_player"
-            android:visibility="gone"
-            android:onClick="btnVideoPlay"/>
+            android:onClick="btnVideoPlay"
+            android:visibility="gone"/>
 
 
     </LinearLayout>
